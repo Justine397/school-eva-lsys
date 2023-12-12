@@ -11,7 +11,7 @@ public class GuiFrame extends JFrame{
         viewLogin = new LoginView();
         viewLogin.loginGui(this);
 
-        
+        setTitle("SCHOOL EVALUATION SYSTEM");
         setSize(600, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
