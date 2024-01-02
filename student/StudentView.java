@@ -8,14 +8,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class StudentView {
+
+    StudentController controlStudent;
     
-    JPanel studentPanel;
+    public void studentGui(JFrame frame, String displayName) {
+        controlStudent = new StudentController(this);
 
-    public void studentGui(JFrame frame) {
-
-        
-
-        studentPanel = new JPanel();
+        JPanel  studentPanel = new JPanel();
         studentPanel.setLayout(null);
         studentPanel.setBackground(new Color(18, 22, 43));
         studentPanel.setBounds(0, 0, 600, 800);
@@ -33,8 +32,7 @@ public class StudentView {
         studentPanel.add(separator);
 
         try {
-            String imagePath = "database/picture/avatar.jpg";
-            ImageIcon originalIcon = new ImageIcon(imagePath);
+            ImageIcon originalIcon = new ImageIcon("C:\\Users\\MARC JOSEPH\\Desktop\\SCHOOL EVALUATION SYSTEM\\picture\\avatar.jpg");
             Image img = originalIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(img);
 
@@ -48,9 +46,15 @@ public class StudentView {
         JLabel nameL = new JLabel("Name: ");
         Font nameF = new Font("Arial Rounded MT Bold", Font.PLAIN, 15);
         nameL.setForeground(new Color(255, 255, 255));
-        nameL.setBounds(250, 200, 100, 15);
+        nameL.setBounds(250, 200, 50, 15);
         nameL.setFont(nameF);
         studentPanel.add(nameL);
+
+        JLabel connectL = new JLabel(displayName);
+        connectL.setForeground(new Color(255, 255, 255));
+        connectL.setBounds(310, 200, 100, 15);
+        connectL.setFont(nameF);
+        studentPanel.add(connectL);
 
         JLabel classL = new JLabel("Class: ");
         Font classF = new Font("Arial Rounded MT Bold", Font.PLAIN, 15);
@@ -112,5 +116,16 @@ public class StudentView {
         JScrollPane scrollPane1 = new JScrollPane(table1);
         scrollPane1.setBounds(30, 450, 520, 250);
         studentPanel.add(scrollPane1);
+    
+
+        JButton logoutBtn = new JButton("LOGOUT");
+        logoutBtn.setBounds(470,100,100,30);
+        logoutBtn.setBorderPainted(false);
+        logoutBtn.setFocusPainted(false);
+        logoutBtn.setBackground(new Color(18, 22, 43));
+        logoutBtn.addActionListener(controlStudent.getLogoutBtn(frame));
+        logoutBtn.setForeground(new Color(255,255,255));
+        studentPanel.add(logoutBtn);
     }
+
 }

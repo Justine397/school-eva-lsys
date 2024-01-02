@@ -5,11 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class LoginView{
 
     private LoginController controlLogin;
     private JPanel loginPanel, contentPanel;
-    private JTextField usernameField;
+    private JTextField idNoField;
     private JPasswordField passwordField;
     private JButton loginButton;
 
@@ -23,7 +24,7 @@ public class LoginView{
         frame.add(loginPanel);
 
         try {
-            String imagePath = "database/picture/school1.jpg";
+            String imagePath = "pictures\\school1.jpg";
             ImageIcon schoolImage = new ImageIcon(imagePath);
             Image img = schoolImage.getImage().getScaledInstance(525, 255, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(img);
@@ -54,16 +55,16 @@ public class LoginView{
         mottoL.setBounds(70, 123, 400, 18);
         contentPanel.add(mottoL);
 
-        JLabel usernameL = new JLabel("Username");
-        usernameL.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 17));
-        usernameL.setForeground(new Color(255, 255, 255));
-        usernameL.setBounds(70, 165, 100, 17);
-        contentPanel.add(usernameL);
+        JLabel idnoL = new JLabel("Id No.");
+        idnoL.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 17));
+        idnoL.setForeground(new Color(255, 255, 255));
+        idnoL.setBounds(70, 165, 100, 17);
+        contentPanel.add(idnoL);
 
-        usernameField = new JTextField();
-        usernameField.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 15));
-        usernameField.setBounds(70, 190, 380, 40);
-        contentPanel.add(usernameField);
+        idNoField = new JTextField();
+        idNoField.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 15));
+        idNoField.setBounds(70, 190, 380, 40);
+        contentPanel.add(idNoField);
 
         JLabel passwordL = new JLabel("Password");
         passwordL.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 17));
@@ -82,13 +83,18 @@ public class LoginView{
         loginButton.setBackground(new Color(128, 0, 181));
         loginButton.setBounds(130, 350, 250, 45);
         loginButton.setFocusable(false);
-        loginButton.addActionListener(controlLogin.getLoginBtn(frame, usernameField, passwordField));
+        loginButton.addActionListener(controlLogin.getLoginBtn(frame, idNoField, passwordField));
         contentPanel.add(loginButton);
+
+        JButton loginAdminBtn = new JButton("Login as ADMINISTRATOR");
+        loginAdminBtn.setBounds(150,400,200,25);
+        loginAdminBtn.setBackground(new Color(58, 0, 82));
+        loginAdminBtn.setForeground(new Color(44, 66, 184));
+        loginAdminBtn.setBorderPainted(false);
+        loginAdminBtn.setFocusPainted(false);
+        loginAdminBtn.addActionListener(controlLogin.getLoginAdmintBtn(frame));
+        contentPanel.add(loginAdminBtn);
 }
 
-    public void addLoginListener(ActionListener actionListener) {
-    }
-
-    public void setVisible(boolean b) {
-    }
+   
 }
